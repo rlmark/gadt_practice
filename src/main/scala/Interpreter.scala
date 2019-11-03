@@ -4,7 +4,7 @@ trait Interpreter extends Lambda {
       case Const(t) => t
       case App(fun, arg) => eval(fun) apply eval(arg)
       case f: Fun[s,t] =>
-        (x: s) =>  eval(f.body(Const(x)))
+        (x: s) => eval(f.body.apply(Const[s](x)))
     }
   }
 }
